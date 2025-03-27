@@ -2,6 +2,7 @@
   "expo": {
     "name": "RODGERSAPP",
     "slug": "RODGERSAPP",
+    "scheme": "RODGERAPP",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,7 +23,15 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "bundler": "metro"
+    },
+    "expo": {
+    "web": {
+      "bundler": "metro"
     }
+  },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
