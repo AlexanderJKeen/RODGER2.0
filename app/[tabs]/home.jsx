@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { router, Stack } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -11,7 +11,11 @@ import QuickAccessCard from '../../components/HomeUI/QuickAccessCard';
 import NotificationItem from '../../components/HomeUI/NotificationItem';
 
 // Import API utilities
-import { fetchUserData, fetchNotifications } from '../../api/HomeService';
+import { 
+  fetchUserData, 
+  fetchNotifications, 
+  deleteNotification 
+} from '../../api/HomeService';
 
 const Home = () => {
   const [user, setUser] = useState(null);
@@ -50,6 +54,28 @@ const Home = () => {
     } finally {
       setIsRefreshing(false);
     }
+  };
+
+  const handleDeleteNotification = async (notificationId) => {
+    console.log(notificationId);
+    Alert.alert(
+      "Delete Notification",
+      "Are you sure you want to delete this notification?",
+      [
+        { text: "Cancel", style: "cancel" },
+        {
+          text: "Yes",
+          onPress: async () => {
+            try {
+              await deleteNotification(notificationId);
+              setNotifications((prev) => prev.filter(n => n.id !== notificationId));
+            } catch (error) {
+              console.error("Error deleting notification:", error);
+            }
+          },
+        },
+      ]
+    );
   };
 
   if (loading) {
@@ -107,11 +133,13 @@ const Home = () => {
             <Text className="text-lg font-bold text-white mb-2.5">Notifications</Text>
             {notifications.length > 0 ? (
               notifications.map((notification, index) => (
-                <NotificationItem 
-                  key={index}
-                  message={notification.message}
-                  timestamp={notification.timestamp}
-                />
+                <TouchableOpacity key={index} onPress={() => handleDeleteNotification(notification.id)}>
+                  <NotificationItem 
+                    key={index}
+                    message={notification.message}
+                    timestamp={notification.timestamp}
+                  />
+                </TouchableOpacity>  
               ))
             ) : (
               <Text className="text-center text-gray-400 italic">No new notifications</Text>

@@ -39,7 +39,20 @@ export const fetchNotifications = async (userId = 22) => {
   }
 };
 
+// API function to delete notification
+export const deleteNotification = async (notificationId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/notifications/delete${notificationId}`);
+    console.log('Delete response:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Full error details:', error.response ? error.response.data : error);
+    throw error;
+  }
+};
+
 export default {
   fetchNotifications,
-  fetchUserData
+  fetchUserData,
+  deleteNotification
 };
