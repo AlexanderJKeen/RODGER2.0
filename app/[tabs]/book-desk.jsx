@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, Alert } from 'react-native';
+import { ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
 import  BookingOptions from '../../components/BookingUI/BookingOptions';
@@ -138,8 +138,8 @@ const BookDesk = () => {
   return (
     <>
       <Stack.Screen name="book-desk" options={{ title: "Book Desk" }} />
-      <SafeAreaView style={styles.container}>
-        <ScrollView contentContainerStyle={styles.scrollContent}>
+      <SafeAreaView className="bg-primary flex-1">
+        <ScrollView className="p-6">
           <Header title="Book a Desk" />
           
           <DateSelector 
@@ -193,15 +193,5 @@ const BookDesk = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-  },
-  scrollContent: {
-    padding: 16,
-  },
-});
 
 export default BookDesk;

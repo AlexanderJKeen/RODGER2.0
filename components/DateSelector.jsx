@@ -16,7 +16,7 @@ const DateSelector = ({ selectedDate, onDateChange, title = 'Select Date:' }) =>
 
   return (
     <View style={styles.dateSelector}>
-      <Text style={styles.sectionTitle}>{title}</Text>
+      <Text className="text-lg font-bold text-white mb-5">{title}</Text>
       <TouchableOpacity 
         style={styles.dateButton} 
         onPress={() => setShowDatePicker(true)}

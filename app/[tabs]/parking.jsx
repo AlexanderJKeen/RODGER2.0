@@ -121,7 +121,7 @@ const Parking = () => {
   return (
   <>
     <Stack.Screen name="parking" options={{ title: "Parking" }} />
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView className="bg-primary flex-1">
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Header title="Book a Parking Space" />
         
@@ -131,7 +131,7 @@ const Parking = () => {
         />
 
         <View style={styles.filterSection}>
-          <Text style={styles.sectionTitle}>Space Type:</Text>
+          <Text className="text-lg font-bold text-white mb-5">Space Type:</Text>
           <View style={styles.typeFilterContainer}>
             {spaceTypes.map((type) => (
               <TouchableOpacity
@@ -155,8 +155,8 @@ const Parking = () => {
           </View>
         </View>
 
-        <View style={styles.spaceSelection}>
-          <Text style={styles.sectionTitle}>Select a parking space:</Text>
+        <View className="mt-10">
+          <Text className="text-lg font-bold text-white mb-5">Select a parking space:</Text>
           {availableSpaces.length > 0 ? (
             <Dropdown
               style={styles.dropdown}
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   filterSection: {
-    marginBottom: 20,
+    marginTop: 20,
   },
   sectionTitle: {
     fontSize: 18,
@@ -242,18 +242,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   selectedTypeFilter: {
-    backgroundColor: '#00296b',
+    backgroundColor: '#FF8E01',
     borderColor: '#00296b',
   },
   typeFilterText: {
-    color: '#333',
+    color: '#zzz',
     fontSize: 14,
   },
   selectedTypeFilterText: {
     color: '#fff',
-  },
-  spaceSelection: {
-    marginTop: 10,
   },
   dropdown: {
     height: 50,

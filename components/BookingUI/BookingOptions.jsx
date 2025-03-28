@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#00296b',
+    color: '#ddd',
     marginBottom: 10,
   },
   optionButton: {

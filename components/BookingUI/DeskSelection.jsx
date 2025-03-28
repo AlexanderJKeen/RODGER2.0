@@ -12,7 +12,7 @@ const DeskSelection = ({
 }) => {
   return (
     <View style={styles.deskSelection}>
-      <Text style={styles.sectionTitle}>{title}</Text>
+      <Text className='text-white mb-5'>{title}</Text>
       <Dropdown
         style={styles.dropdown}
         placeholderStyle={styles.placeholderStyle}
@@ -37,9 +37,6 @@ const DeskSelection = ({
 };
 
 const styles = StyleSheet.create({
-  deskSelection: {
-    marginTop: 10,
-  },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
